@@ -10,6 +10,8 @@ public class MainMenu : MonoBehaviour {
 
     public string fedLevel;
 
+    public string lilyUpdatedLvl;
+
     public Animator transition;
 
     public Animator move;
@@ -71,7 +73,7 @@ public class MainMenu : MonoBehaviour {
 
         transition.SetTrigger("Up");
         yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene(lilyLevel);
+        SceneManager.LoadScene(lilyUpdatedLvl);
 
 
     }

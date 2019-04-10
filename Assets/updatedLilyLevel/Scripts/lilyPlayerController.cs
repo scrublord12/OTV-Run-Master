@@ -23,7 +23,6 @@ public class lilyPlayerController : MonoBehaviour {
     public Transform beeModeEnd;
     public Transform groundCheck;
     public float groundCheckRadius;
-    public GameManager gm;
     public bool obstacleHit;
     bool stoppedJumping;
     public bool alreadyDead;
@@ -39,7 +38,13 @@ public class lilyPlayerController : MonoBehaviour {
 
     public Transform lilyStartPosition;
 
+    public Transform[] deathPoint;
+
+    public int deathPointTracker;
+
     public bool reset;
+
+    public lilyLvlManager lvlManager;
     void Start() {
 
         rb = GetComponent<Rigidbody2D>();
@@ -75,7 +80,7 @@ public class lilyPlayerController : MonoBehaviour {
             if ((Input.GetMouseButtonDown(0) && isGrounded || Input.GetKeyDown(KeyCode.Space) && isGrounded) && speed > 0) {
 
                 rb.velocity = new Vector2(rb.velocity.x, jump_Force);
-                JumpSounds[Random.Range(0, JumpSounds.Length)].GetComponent<AudioSource>().Play();
+                //JumpSounds[Random.Range(0, JumpSounds.Length)].GetComponent<AudioSource>().Play();
 
                 stoppedJumping = false;
             }
@@ -130,6 +135,15 @@ public class lilyPlayerController : MonoBehaviour {
                 myAnim.SetFloat("Vertical_Speed", rb.velocity.y);
 
             }
+        }
+
+        if(transform.position.x > deathPoint[deathPointTracker].transform.position.x){
+            deathPointTracker++;
+        }
+
+        if(transform.position.y < deathPoint[deathPointTracker].transform.position.y){
+            alreadyDead = true;
+            lvlManager.Died();
         }
 
     }

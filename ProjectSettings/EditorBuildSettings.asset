@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Fed_Level.unity
     guid: 0a2a16bf927e2b646aa75c8b6595954d
+  - enabled: 1
+    path: Assets/updatedLilyLevel/lilyUpdatedLvl.unity
+    guid: a31949ddb3a907a438d6541aab1036a9
   m_configObjects: {}
